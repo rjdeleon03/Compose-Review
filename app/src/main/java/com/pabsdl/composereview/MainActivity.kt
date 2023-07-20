@@ -51,19 +51,27 @@ class MainActivity : ComponentActivity() {
                         }
                     }
 
-                    LazyColumn {
-                        items(names) { currentName ->
-                            Text(
-                                text = currentName,
-                                modifier = Modifier
-                                    .fillMaxWidth()
-                                    .padding(16.dp)
-                            )
-                            Divider()
-                        }
-                    }
+                    NameList(names)
                 }
             }
+        }
+    }
+}
+
+@Composable
+fun NameList(
+    names: List<String>,
+    modifier: Modifier = Modifier
+) {
+    LazyColumn(modifier) {
+        items(names) { currentName ->
+            Text(
+                text = currentName,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(16.dp)
+            )
+            Divider()
         }
     }
 }
